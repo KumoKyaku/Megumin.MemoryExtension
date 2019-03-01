@@ -1,39 +1,82 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!--主配置-->
   <PropertyGroup>
-    <TargetFramework>netstandard1.2</TargetFramework>
+    <Authors>云却</Authors>
+    
+    <!--版本配置-->
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Version>1.1.0.0</Version>
+    
+    <!--包配置-->
+    <Product>MeguminLibrary</Product>
+    <PackageId>Megumin.MemoryExtension</PackageId>
+    <AssemblyName>Megumin.MemoryExtension</AssemblyName>
     <RootNamespace>System.Buffers</RootNamespace>
-    <LangVersion>7.3</LangVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.0</Version>
+    <PackageTags>notnetstandard,unity,span,memory</PackageTags>
     <Description>System.Memory.dll 扩展。
 增加一个新的BufferPool。
 增加一些Span流转换常用类型。</Description>
     <PackageProjectUrl>https://github.com/KumoKyaku/Megumin.MemoryExtension</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/KumoKyaku/Megumin.MemoryExtension/blob/master/LICENSE</PackageLicenseUrl>
-    <Authors>云却</Authors>
-    <Product>MeguminLibrary</Product>
-    <PackageTags>span,memory</PackageTags>
-    <Copyright>Copyright (c) 2019 云却</Copyright>
+    <RepositoryUrl>https://github.com/KumoKyaku/Megumin.MemoryExtension</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+
+  </PropertyGroup> 
+  
+  <!--目标框架配置-->
+  <PropertyGroup>
+    <TargetFramework>netstandard1.1</TargetFramework>
+  </PropertyGroup>
+  
+  <!--依赖配置-->
+  <ItemGroup>
+    <PackageReference Include="System.Memory" Version="4.5.2" />
+  </ItemGroup>
+  
+  <!--以下是项目通用配置-->
+  
+  <!--基本配置-->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>1701;1702;1591</NoWarn>
+    
+    <!--打包配置-->
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\OpenSource.snk</AssemblyOriginatorKeyFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-  </PropertyGroup>
+    
+    <!--xml注释生成-->
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>bin\Debug\netstandard1.2\Megumin.MemoryExtention.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>bin\Release\netstandard1.2\Megumin.MemoryExtention.xml</DocumentationFile>
-  </PropertyGroup>
-
+    <!--版权配置-->
+    <Copyright>Copyright (c) 2019 云却</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup> 
+  
+  <!--许可证文件配置-->
   <ItemGroup>
-    <PackageReference Include="System.Memory" Version="4.5.1" />
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
+  
+  <!--调试符号配置-->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
 
 </Project>

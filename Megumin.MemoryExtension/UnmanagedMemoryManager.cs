@@ -14,7 +14,7 @@ namespace System.Buffers
         public UnmanagedMemoryManager(int length)
         {
             this.Length = length;
-            perSize = Marshal.SizeOf<T>();
+            perSize = Marshal.SizeOf(typeof(T));
             if (Length > 0)
             {
                 this.ptr = Marshal.AllocHGlobal(Length * perSize);
