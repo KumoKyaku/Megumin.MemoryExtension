@@ -14,7 +14,7 @@
     <PackageId>Megumin.MemoryExtension</PackageId>
     <AssemblyName>Megumin.MemoryExtension</AssemblyName>
     <RootNamespace>System.Buffers</RootNamespace>
-    <PackageTags>notnetstandard,unity,span,memory</PackageTags>
+    <PackageTags>dotnetstandard,unity,span,memory</PackageTags>
     <Description>System.Memory.dll 扩展。
 增加一个新的BufferPool。
 增加一些Span流转换常用类型。</Description>
